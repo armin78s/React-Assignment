@@ -1,11 +1,12 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
+import React from "react";
+import ReactDOM from "react-dom";
+import "./index.css";
+import App from "./App";
+import { TodoContextProvider } from "./store/todo-context";
 
 ReactDOM.render(
-    <App />,
-  document.getElementById('root')
+  <TodoContextProvider>
+    <App />
+  </TodoContextProvider>,
+  document.getElementById("root")
 );
-
-

@@ -1,9 +1,11 @@
-import React, { Fragment } from "react";
+import React, { Fragment ,useContext } from "react";
 import classes from "./TodoItem.module.css";
+import TodoContext from "../store/todo-context";
 
 const TodoItem = (props) => {
+  const context = useContext(TodoContext);
   const deleteTodoItem = () => {
-    props.deleteItem(props.todo.id);
+    context.deleteTodo(props.todo.id);
   };
   return (
     <Fragment>
