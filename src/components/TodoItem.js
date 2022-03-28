@@ -1,9 +1,11 @@
-import React, { Fragment } from "react";
+import React, { Fragment} from "react";
 import classes from "./TodoItem.module.css";
+import useTodolist from "../hook/use-todolist";
 
 const TodoItem = (props) => {
+  const {deleteTodo} = useTodolist();
   const deleteTodoItem = () => {
-    props.deleteItem(props.todo.id);
+    deleteTodo(props.todo.id);
   };
   return (
     <Fragment>

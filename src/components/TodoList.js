@@ -1,6 +1,8 @@
-import React from "react";
+import React,{useContext} from "react";
 import TodoItem from "./TodoItem";
-const TodoList = (props) => {
+import TodoContext from "../store/todo-context";
+const TodoList = () => {
+  const context = useContext(TodoContext);
   let index = 1;
   return (
     <table>
@@ -13,12 +15,11 @@ const TodoList = (props) => {
         </tr>
       </thead>
       <tbody>
-        {props.todoItems.map((todo) => (
+        {context.todoList.map((todo) => (
           <tr key={todo.id}>
             <TodoItem
               index={index++}
               todo={todo}
-              deleteItem={props.onDeleteTodo}
             />
           </tr>
         ))}
