@@ -1,24 +1,25 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import TodoItem from "./TodoItem";
-const TodoList = (props) => {
+const TodoList = () => {
+  const todoList = useSelector(state => state.todoList);
   let index = 1;
   return (
-    <table>
+    <table className="border-collapse border border-slate-600 shadow-lg mt-8 m-auto">
       <thead>
         <tr>
-          <th>No</th>
-          <th>Title</th>
-          <th>Description</th>
-          <th>Due Date</th>
+          <th className="border border-slate-600">No</th>
+          <th className="border border-slate-600">Title</th>
+          <th className="border border-slate-600">Description</th>
+          <th className="border border-slate-600">Due Date</th>
         </tr>
       </thead>
       <tbody>
-        {props.todoItems.map((todo) => (
+        {todoList.map((todo) => (
           <tr key={todo.id}>
             <TodoItem
               index={index++}
               todo={todo}
-              deleteItem={props.onDeleteTodo}
             />
           </tr>
         ))}

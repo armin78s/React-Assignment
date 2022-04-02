@@ -1,22 +1,24 @@
-import React, { Fragment } from "react";
-import classes from "./TodoItem.module.css";
+import React, { Fragment} from "react";
+import { useDispatch } from "react-redux";
 
 const TodoItem = (props) => {
+  const dispatch = useDispatch();
+
   const deleteTodoItem = () => {
-    props.deleteItem(props.todo.id);
+    dispatch({ type: 'REMOVE' , itemId:props.todo.id});
   };
   return (
     <Fragment>
-      <td>{props.index}</td>
-      <td>{props.todo.title}</td>
-      <td>{props.todo.description}</td>
-      <td>
+      <td className="border border-slate-600">{props.index}</td>
+      <td className="border border-slate-600">{props.todo.title}</td>
+      <td className="border border-slate-600">{props.todo.description}</td>
+      <td className="border border-slate-600">
         {props.todo.date.toLocaleString("en-US", { month: "long" })}/
         {props.todo.date.toLocaleString("en-US", { day: "2-digit" })}/
         {props.todo.date.getFullYear()}
       </td>
-      <td>
-        <button className={classes.button} onClick={deleteTodoItem}>Delete</button>
+      <td className="border border-slate-600">
+        <button className="bg-red-600 text-white px-4 py-1 rounded-md border border-slate-500" onClick={deleteTodoItem}>Delete</button>
       </td>
     </Fragment>
   );
